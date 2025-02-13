@@ -1,5 +1,24 @@
 * Nvim config
 ** Install
+*** Linux/Mac:
+- Install neovim:
+
+  #+BEGIN_SRC shell
+    brew install neovim
+  #+END_SRC
+
+  #+RESULTS:
+
+- Symlink neovim config:
+
+  #+BEGIN_SRC shell :dir "." :quiet
+    rm -rf ~/.config/nvim
+    mkdir -p ~/.config/nvim
+    ln -sF $(pwd)/init.lua ~/.config/nvim/
+  #+END_SRC
+
+  #+RESULTS:
+
 *** Windows:
 Run a CMD window as Administrator to create a symlink:
 
