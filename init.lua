@@ -74,6 +74,7 @@ require("lazy").setup({
 
 {
   -- https://github.com/NeogitOrg/neogit
+  -- Stage hunk via Visual mode: `V`, then stage: `s`.
   "NeogitOrg/neogit",
   dependencies = {
     "nvim-lua/plenary.nvim",         -- required
