@@ -224,7 +224,16 @@ require("mason-lspconfig").setup_handlers {
 -- require("lspconfig").lua_ls.setup {}
 -- require("lspconfig").rust_analyzer.setup {}
 -- ...
-
+require('lspconfig').lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- https://neovim.discourse.group/t/how-to-suppress-warning-undefined-global-vim/1882/15
+        globals = {'vim'}
+      }
+    }
+  }
+})
 
 local cmp = require('cmp')
 local lspkind = require('lspkind')
