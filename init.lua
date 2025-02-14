@@ -127,7 +127,7 @@ require("lazy").setup({
 
 {
   "hrsh7th/nvim-cmp",
---  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lsp",
   "ray-x/cmp-treesitter",
 },
 
@@ -198,9 +198,10 @@ cmp.setup {
     format = lspkind.cmp_format(),
   },
   sources = {
-  --  { name = 'cmp_nvim_lsp' },
+    { name = 'nvim_lsp' },
     { name = 'treesitter' },
   },
 }
 
 require("devcontainer").setup{}
+
