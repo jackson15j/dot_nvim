@@ -152,6 +152,12 @@ require("lazy").setup({
 },
 
 {
+  -- https://github.com/stevearc/resession.nvim
+  'stevearc/resession.nvim',
+  dependencies = 'romgrk/barbar.nvim'
+},
+
+{
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
@@ -238,6 +244,29 @@ cmp.setup {
 
 require("devcontainer").setup{}
 require("barbar").setup()
+local resession = require("resession")
+resession.setup({
+  autosave = {
+    enabled = true,
+    interval = 60,
+    notify = true,
+  },
+  extensions = {
+    barbar = {},
+  },
+})
+-- Resession does NOTHING automagically, so we have to set up some keymaps
+vim.keymap.set("n", "<leader>ss", resession.save, { desc = "Save window session" })
+vim.keymap.set("n", "<leader>sl", resession.load, { desc = "Load window session" })
+vim.keymap.set("n", "<leader>sd", resession.delete, { desc = "Delete window session" })
+-- Resession save on exit.
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    -- Always save a special session named "last"
+    resession.save("last")
+  end,
+})
+
 
 local wk = require("which-key")
 wk.add({
