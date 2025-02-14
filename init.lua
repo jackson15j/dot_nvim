@@ -107,17 +107,20 @@ require("lazy").setup({
     "MunifTanjim/nui.nvim",
     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
   },
-    config = function()
-      require("neo-tree").setup({
-	filesystem = {
-          filtered_items = {
-            hide_hidden = false,  -- Windows-only.
-	    hide_dotfiles = false,
-            hide_gitignored = false
-	  },
-	},
-      })
-    end,
+  config = function()
+    require("neo-tree").setup({
+    	filesystem = {
+        filtered_items = {
+          hide_hidden = false,  -- Windows-only.
+	        hide_dotfiles = false,
+          hide_gitignored = false
+	      },
+      },
+    })
+  end,
+  keys = {
+    { "<leader>t", "<cmd>Neotree dir=%:p:h:h toggle reveal<cr>", desc = "NeoTree" },
+  },
 },
 
 {
