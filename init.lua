@@ -110,10 +110,22 @@ require("lazy").setup({
 	},
       })
     end,
-}
+},
 
+{
+  -- https://github.com/williamboman/mason.nvim
+  -- LSP/DAP/etc management.
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    "onsails/lspkind.nvim",
+},
 
-
+{
+  "hrsh7th/nvim-cmp",
+--  "hrsh7th/cmp-nvim-lsp",
+  "ray-x/cmp-treesitter",
+},
 
 
   },
@@ -126,3 +138,50 @@ require("lazy").setup({
 
 -- AutoStart plugins
 require('lualine').setup()
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+    -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+    ensure_installed = {
+      "bashls",
+      "lua_ls",
+      "docker_compose_language_service",
+      "dockerls",
+      "marksman",
+      "textlsp",
+      "yamlls"
+    },
+}
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require("mason-lspconfig").setup_handlers {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function (server_name) -- default handler (optional)
+        require("lspconfig")[server_name].setup {
+--	  capabilities = capabilities,
+	}
+    end,
+}
+
+-- After setting up mason-lspconfig you may set up servers via lspconfig
+-- require("lspconfig").lua_ls.setup {}
+-- require("lspconfig").rust_analyzer.setup {}
+-- ...
+
+
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+cmp.setup {
+  formatting = {
+    format = lspkind.cmp_format(),
+  },
+  sources = {
+  --  { name = 'cmp_nvim_lsp' },
+    { name = 'treesitter' },
+  },
+}
+
