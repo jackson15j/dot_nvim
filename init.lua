@@ -131,6 +131,12 @@ require("lazy").setup({
   "ray-x/cmp-treesitter",
 },
 
+{
+  -- https://github.com/esensar/nvim-dev-container
+  'https://codeberg.org/esensar/nvim-dev-container',
+  dependencies = 'nvim-treesitter/nvim-treesitter'
+},
+
 
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -148,13 +154,21 @@ require("mason-lspconfig").setup {
     -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
     ensure_installed = {
       "bashls",
-      "lua_ls",
       "docker_compose_language_service",
       "dockerls",
+      "jsonls",
+      "lua_ls",
       "marksman",
       "textlsp",
       "yamlls"
     },
+}
+
+require("nvim-treesitter.configs").setup {
+  ensure_installed = {
+    "json",
+    "jsonc",  -- DevContainer requirement.
+  }
 }
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
@@ -189,3 +203,4 @@ cmp.setup {
   },
 }
 
+require("devcontainer").setup{}
