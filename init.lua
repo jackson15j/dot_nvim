@@ -138,6 +138,11 @@ require("lazy").setup({
 },
 
 {
+    -- https://github.com/romgrk/barbar.nvim
+  "romgrk/barbar.nvim",
+},
+
+{
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
@@ -223,6 +228,7 @@ cmp.setup {
 }
 
 require("devcontainer").setup{}
+require("barbar").setup()
 
 local wk = require("which-key")
 wk.add({
