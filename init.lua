@@ -85,7 +85,10 @@ require("lazy").setup({
     "ibhagwan/fzf-lua",              -- optional
     "echasnovski/mini.pick",         -- optional
   },
-  config = true
+  config = true,
+  keys = {
+    { "<leader>g", "<cmd>Neogit cwd=%:p:h<cr>", desc = "Git" },
+  },
 },
 
 {
