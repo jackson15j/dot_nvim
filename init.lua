@@ -17,6 +17,8 @@ o.tabstop = 2  -- tab = 2 spaces.
 o.encoding = "UTF-8"
 o.conceallevel = 2  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
 o.concealcursor = 'nc'  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
+o.scrolloff = 10 -- Scroll buffer when near edge.
+
 
 -- https://www.reddit.com/r/neovim/comments/tci7qf/looking_for_an_if_running_on_windows_else/
 local uname = vim.loop.os_uname()
