@@ -15,6 +15,7 @@
     rm -rf ~/.config/nvim
     mkdir -p ~/.config/nvim
     ln -sF $(pwd)/init.lua ~/.config/nvim/
+    ln -sF $(pwd)/spell ~/.config/nvim/
   #+END_SRC
 
   #+RESULTS:
@@ -25,4 +26,7 @@ Run a CMD window as Administrator to create a symlink:
 #+BEGIN_EXAMPLE bat
   C:\Users\craig.astill>mklink %localappdata%\nvim\init.lua c:\src\org\dot_nvim\init.lua
   symbolic link created for C:\Users\craig.astill\AppData\Local\nvim\init.lua <<===>> c:\src\org\dot_nvim\init.lua
-#+END_EXAMPLE
+
+  C:\Users\craig.astill>mklink /d %localappdata%\nvim\spell c:\src\org\dot_nvim\spell
+  symbolic link created for C:\Users\craig.astill\AppData\Local\nvim\spell <<===>> c:\src\org\dot_nvim\spell
+    #+END_EXAMPLE
