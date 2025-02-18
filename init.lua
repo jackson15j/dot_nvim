@@ -19,6 +19,12 @@ o.conceallevel = 2  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not
 o.concealcursor = 'nc'  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
 o.scrolloff = 10 -- Scroll buffer when near edge.
 
+-- NOTE: Downloading spell files is a mess + files were last changed in 2019, so just going
+-- to store them in git and symlink!! See: https://ftp.nluug.nl/pub/vim/runtime/spell/
+--
+o.spelllang = "en_gb,cy_gb"
+o.spell = true
+
 
 -- https://www.reddit.com/r/neovim/comments/tci7qf/looking_for_an_if_running_on_windows_else/
 local uname = vim.loop.os_uname()
@@ -286,3 +292,4 @@ wk.add({
   -- keys = "<c-w>",
   -- loop = true, -- this will keep the popup open until you hit <esc>
 -- })
+
