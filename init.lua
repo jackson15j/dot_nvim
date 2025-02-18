@@ -89,11 +89,21 @@ require("lazy").setup({
     "ibhagwan/fzf-lua",              -- optional
     "echasnovski/mini.pick",         -- optional
   },
-  config = true,
+  config = function()
+    require("neogit").setup({
+      sections = {
+        recent = {folded = false,},
+        stashes = {folded = false,},
+        unpulled_pushRemote = {folded = false,},
+        unpulled_upstream = {folded = false,},
+      },
+    })
+  end,
   keys = {
     { "<leader>g", "<cmd>Neogit cwd=%:p:h<cr>", desc = "Git" },
   },
 },
+
 
 {
   -- https://github.com/nvim-lualine/lualine.nvim
