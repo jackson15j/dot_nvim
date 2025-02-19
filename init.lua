@@ -62,6 +62,29 @@ require("lazy").setup({
   spec = {
     -- add your plugins here
 
+
+-- {
+--   'nvim-telescope/telescope-fzf-native.nvim',
+--   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+-- },
+
+
+{
+  -- Fuzzy searching.
+  --  or: tag = '0.1.8', -- Never `master` (apparently).
+  'nvim-telescope/telescope.nvim', branch = '0.1.x', 
+  dependencies = { 
+    'nvim-lua/plenary.nvim',  -- required.
+    -- Windows: `winget install BurntSushi.ripgrep.MSVC`.
+    'BurntSushi/ripgrep',  -- required for `live_grep` and `grep_string` and is the first priority for `find_files`.
+    -- 'nvim-telescope/telescope-fzf-native',  -- We also suggest you install one native telescope sorter to significantly improve sorting performance.
+    'sharkdp/fd',  -- Optional: finder.
+    'nvim-tree/nvim-web-devicons',  -- Optional: icons'
+  },
+  config = true 
+},
+
+
 {
   -- https://nvim-orgmode.github.io/
   -- To build tree-stitter grammars on windows: `winget install zig.zig`
