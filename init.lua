@@ -17,7 +17,10 @@ o.tabstop = 2  -- tab = 2 spaces.
 o.encoding = "UTF-8"
 o.conceallevel = 2  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
 o.concealcursor = 'nc'  -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
-o.scrolloff = 10 -- Scroll buffer when near edge.
+o.scrolloff = 10  -- Scroll buffer when near edge.
+vim.g.autoread = true  -- reload file if only changed externally.
+vim.g.autowrite = true  -- Writes on certain events.
+vim.g.autowriteall = true  -- Write all buffers when switching.
 
 -- NOTE: Downloading spell files is a mess + files were last changed in 2019, so just going
 -- to store them in git and symlink!! See: https://ftp.nluug.nl/pub/vim/runtime/spell/
