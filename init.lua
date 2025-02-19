@@ -22,7 +22,7 @@ o.scrolloff = 10 -- Scroll buffer when near edge.
 -- NOTE: Downloading spell files is a mess + files were last changed in 2019, so just going
 -- to store them in git and symlink!! See: https://ftp.nluug.nl/pub/vim/runtime/spell/
 --
-o.spelllang = "en_gb,cy_gb"
+o.spelllang = "en_gb,cy"  -- `cy_gb` raises: `Warning: region gb not supported`. 
 o.spell = true
 
 
