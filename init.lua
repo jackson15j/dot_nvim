@@ -177,8 +177,12 @@ require("lazy").setup({
 
 {
   "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-nvim-lsp",
-  "ray-x/cmp-treesitter",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-copilot",
+    "ray-x/cmp-treesitter",
+    "github/copilot.vim",
+  },
 },
 
 {
@@ -281,6 +285,7 @@ cmp.setup {
     format = lspkind.cmp_format(),
   },
   sources = {
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'treesitter' },
   },
