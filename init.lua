@@ -139,8 +139,9 @@ require("lazy").setup({
 
 {
   -- https://github.com/nvim-lualine/lualine.nvim
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = true,
 },
 
 {
@@ -238,7 +239,6 @@ require("lazy").setup({
 })
 
 -- AutoStart plugins
-require('lualine').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup {
