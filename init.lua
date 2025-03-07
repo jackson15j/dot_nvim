@@ -67,7 +67,14 @@ require("lazy").setup({
 
     {
       'nvim-treesitter/nvim-treesitter',
-      config = true,
+      config = function()
+        require("nvim-treesitter.configs").setup({
+          ensure_installed = {
+            "json",
+            "jsonc",  -- DevContainer requirement.
+          },
+        })
+      end,
     },
 
 -- {
@@ -285,13 +292,6 @@ require("lazy").setup({
 
 
 -- AutoStart plugins
-
-require("nvim-treesitter.configs").setup {
-  ensure_installed = {
-    "json",
-    "jsonc",  -- DevContainer requirement.
-  },
-}
 
 
 
