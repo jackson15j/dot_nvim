@@ -190,7 +190,20 @@ require("lazy").setup({
     "hrsh7th/cmp-copilot",
     "ray-x/cmp-treesitter",
     "github/copilot.vim",
+    "onsails/lspkind.nvim",
   },
+  config = function()
+    require("cmp").setup({
+      formatting = {
+        format = require('lspkind').cmp_format(),
+      },
+      sources = {
+        { name = 'copilot' },
+        { name = 'nvim_lsp' },
+        { name = 'treesitter' },
+      },
+    })
+  end,
 },
 
   {
@@ -295,18 +308,6 @@ require('lspconfig').lua_ls.setup({
   }
 })
 
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-cmp.setup {
-  formatting = {
-    format = lspkind.cmp_format(),
-  },
-  sources = {
-    { name = 'copilot' },
-    { name = 'nvim_lsp' },
-    { name = 'treesitter' },
-  },
-}
 
 require("devcontainer").setup{}
 require("barbar").setup()
