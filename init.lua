@@ -174,14 +174,16 @@ require("lazy").setup({
   },
 },
 
-{
-  -- https://github.com/williamboman/mason.nvim
-  -- LSP/DAP/etc management.
+  {
+    -- https://github.com/williamboman/mason.nvim
+    -- LSP/DAP/etc management.
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    "onsails/lspkind.nvim",
-},
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+      "onsails/lspkind.nvim",
+    },
+  },
 
 {
   "hrsh7th/nvim-cmp",
