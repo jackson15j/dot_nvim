@@ -251,10 +251,21 @@ require("lazy").setup({
 				"onsails/lspkind.nvim",
 			},
 			config = function()
+				local cmp = require("cmp")
 				require("cmp").setup({
 					formatting = {
 						format = require("lspkind").cmp_format(),
 					},
+					-- https://neovim.discourse.group/t/neovim-how-exactly-do-i-use-and-navigate-nvim-cmp/5100/2
+					mapping = cmp.mapping.preset.insert({
+						["<Up>"] = cmp.mapping.select_prev_item(),
+						["<Down>"] = cmp.mapping.select_next_item(),
+						["<C-b>"] = cmp.mapping.scroll_docs(-4),
+						["<C-f>"] = cmp.mapping.scroll_docs(4),
+						["<C-Space>"] = cmp.mapping.complete(),
+						["<C-e>"] = cmp.mapping.abort(),
+						["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					}),
 					sources = {
 						{ name = "copilot" },
 						{ name = "nvim_lsp" },
