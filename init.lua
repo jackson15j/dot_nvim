@@ -65,6 +65,10 @@ require("lazy").setup({
   spec = {
     -- add your plugins here
 
+    {
+      'nvim-treesitter/nvim-treesitter',
+      config = true,
+    },
 
 -- {
 --   'nvim-telescope/telescope-fzf-native.nvim',
