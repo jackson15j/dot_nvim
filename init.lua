@@ -25,7 +25,7 @@ vim.g.autowriteall = true  -- Write all buffers when switching.
 -- NOTE: Downloading spell files is a mess + files were last changed in 2019, so just going
 -- to store them in git and symlink!! See: https://ftp.nluug.nl/pub/vim/runtime/spell/
 --
-o.spelllang = "en_gb,cy"  -- `cy_gb` raises: `Warning: region gb not supported`. 
+o.spelllang = "en_gb,cy"  -- `cy_gb` raises: `Warning: region gb not supported`.
 o.spell = true
 
 
@@ -86,8 +86,8 @@ require("lazy").setup({
 {
   -- Fuzzy searching.
   --  or: tag = '0.1.8', -- Never `master` (apparently).
-  'nvim-telescope/telescope.nvim', branch = '0.1.x', 
-  dependencies = { 
+  'nvim-telescope/telescope.nvim', branch = '0.1.x',
+  dependencies = {
     'nvim-lua/plenary.nvim',  -- required.
     -- Windows: `winget install BurntSushi.ripgrep.MSVC`.
     'BurntSushi/ripgrep',  -- required for `live_grep` and `grep_string` and is the first priority for `find_files`.
@@ -95,7 +95,7 @@ require("lazy").setup({
     'sharkdp/fd',  -- Optional: finder.
     'nvim-tree/nvim-web-devicons',  -- Optional: icons'
   },
-  config = true 
+  config = true
 },
 
 
@@ -355,4 +355,3 @@ wk.add({
   -- keys = "<c-w>",
   -- loop = true, -- this will keep the popup open until you hit <esc>
 -- })
-
