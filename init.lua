@@ -215,7 +215,21 @@ require("lazy").setup({
           }
         end,
       }
-    end,
+      -- After setting up mason-lspconfig you may set up servers via lspconfig
+      -- require("lspconfig").lua_ls.setup {}
+      -- require("lspconfig").rust_analyzer.setup {}
+      -- ...
+      require('lspconfig').lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- https://neovim.discourse.group/t/how-to-suppress-warning-undefined-global-vim/1882/15
+              globals = {'vim'}
+            }
+          }
+        }
+      })
+   end,
   },
 
 {
@@ -298,21 +312,6 @@ require("lazy").setup({
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-
--- After setting up mason-lspconfig you may set up servers via lspconfig
--- require("lspconfig").lua_ls.setup {}
--- require("lspconfig").rust_analyzer.setup {}
--- ...
-require('lspconfig').lua_ls.setup({
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- https://neovim.discourse.group/t/how-to-suppress-warning-undefined-global-vim/1882/15
-        globals = {'vim'}
-      }
-    }
-  }
-})
 
 
 require("devcontainer").setup{}
