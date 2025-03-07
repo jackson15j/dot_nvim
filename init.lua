@@ -84,6 +84,17 @@ require("lazy").setup({
 			end,
 		},
 
+		{
+			-- https://github.com/folke/tokyonight.nvim
+			"folke/tokyonight.nvim",
+			lazy = false,
+			priority = 1000,
+			opts = {},
+			config = function()
+				vim.cmd([[colorscheme tokyonight-night]])
+			end,
+		},
+
 		-- {
 		--   'nvim-telescope/telescope-fzf-native.nvim',
 		--   build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
