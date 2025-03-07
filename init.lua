@@ -15,8 +15,16 @@ o.expandtab = true -- spaces for tabs.
 o.shiftwidth = 2 -- autoindent 2 spaces.
 o.tabstop = 2 -- tab = 2 spaces.
 o.encoding = "UTF-8"
+-- NOTE: On Windows when `conceallevel=2 concealcursor="nv"` + highlight line, it will
+-- de-indent the line as you go up and down. Fixes are:
+--
+-- - `:set conceallevel=<0|1>`.
+-- - `:set concealcursor=`.
+-- Disable line highlighting.
+--
+-- See: https://vi.stackexchange.com/questions/43359/text-shifts-one-character-to-the-left-when-moving-upwards
 o.conceallevel = 2 -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
-o.concealcursor = "nc" -- https://nvim-orgmode.github.io/troubleshoot#links-are-not-concealed
+o.concealcursor = "" -- Don't conceal when cursor is on that line.
 o.scrolloff = 10 -- Scroll buffer when near edge.
 vim.g.autoread = true -- reload file if only changed externally.
 vim.g.autowrite = true -- Writes on certain events.
