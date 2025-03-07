@@ -296,6 +296,18 @@ require("lazy").setup({
 },
 
 
+  {
+    -- https://github.com/cappyzawa/trim.nvim
+    "cappyzawa/trim.nvim",
+    config = function()
+      require("trim").setup({
+        trim_first_line = false,  -- Don't eat the first line, eg. commit buffers.
+        trim_last_line = false,  -- Preemptively disabling, most languages want a trailing newline.
+        highlight = true,
+      })
+    end,
+  },
+
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
