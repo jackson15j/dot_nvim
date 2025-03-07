@@ -232,28 +232,30 @@ require("lazy").setup({
    end,
   },
 
-{
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-copilot",
-    "ray-x/cmp-treesitter",
-    "github/copilot.vim",
-    "onsails/lspkind.nvim",
+  {
+    -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+    -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-copilot",
+      "ray-x/cmp-treesitter",
+      "github/copilot.vim",
+      "onsails/lspkind.nvim",
+    },
+    config = function()
+      require("cmp").setup({
+        formatting = {
+          format = require('lspkind').cmp_format(),
+        },
+        sources = {
+          { name = 'copilot' },
+          { name = 'nvim_lsp' },
+          { name = 'treesitter' },
+        },
+      })
+    end,
   },
-  config = function()
-    require("cmp").setup({
-      formatting = {
-        format = require('lspkind').cmp_format(),
-      },
-      sources = {
-        { name = 'copilot' },
-        { name = 'nvim_lsp' },
-        { name = 'treesitter' },
-      },
-    })
-  end,
-},
 
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -357,8 +359,6 @@ require("lazy").setup({
 
 
 
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 
