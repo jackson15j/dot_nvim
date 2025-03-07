@@ -181,56 +181,68 @@ require("lazy").setup({
   },
 },
 
-  {
-    -- https://github.com/williamboman/mason.nvim
-    -- LSP/DAP/etc management.
-    "williamboman/mason.nvim",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
-      "onsails/lspkind.nvim",
     },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-        ensure_installed = {
-          "bashls",
-          "docker_compose_language_service",
-          "dockerls",
-          "jsonls",
-          "lua_ls",
-          "marksman",
-          "textlsp",
-          "yamlls"
-        },
-      })
-      require("mason-lspconfig").setup_handlers {
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {
-          -- capabilities = capabilities,
-          }
-        end,
-      }
-      -- After setting up mason-lspconfig you may set up servers via lspconfig
-      -- require("lspconfig").lua_ls.setup {}
-      -- require("lspconfig").rust_analyzer.setup {}
-      -- ...
-      require('lspconfig').lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- https://neovim.discourse.group/t/how-to-suppress-warning-undefined-global-vim/1882/15
-              globals = {'vim'}
+
+    {
+      -- https://github.com/williamboman/mason.nvim
+      -- LSP/DAP/etc management.
+      "williamboman/mason.nvim",
+      dependencies = {
+        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer",
+        "neovim/nvim-lspconfig",
+        "onsails/lspkind.nvim",
+      },
+      config = function()
+        require("mason").setup()
+        require("mason-lspconfig").setup({
+          -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+          ensure_installed = {
+            "bashls",
+            "docker_compose_language_service",
+            "dockerls",
+            "jsonls",
+            "lua_ls",
+            "marksman",
+            "textlsp",
+            "yamlls",
+          },
+        })
+        require("mason-lspconfig").setup_handlers {
+          -- The first entry (without a key) will be the default handler
+          -- and will be called for each installed server that doesn't have
+          -- a dedicated handler.
+          function(server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup {
+              -- capabilities = capabilities,
+            }
+          end,
+        }
+        -- After setting up mason-lspconfig you may set up servers via lspconfig
+        -- require("lspconfig").lua_ls.setup {}
+        -- require("lspconfig").rust_analyzer.setup {}
+        -- ...
+        require('lspconfig').lua_ls.setup({
+          settings = {
+            Lua = {
+              diagnostics = {
+                -- https://neovim.discourse.group/t/how-to-suppress-warning-undefined-global-vim/1882/15
+                globals = { 'vim' }
+              }
             }
           }
-        }
-      })
-   end,
-  },
+        })
+        require("mason-tool-installer").setup({
+          ensure_installed = {
+            -- formatters
+            "stylua"
+          },
+          auto_update = true,
+          start_delay = 3000,
+          debounce_hours = 5,
+        })
+      end,
+    },
 
   {
     -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
