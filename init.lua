@@ -132,6 +132,13 @@ require("lazy").setup({
 			},
 			config = function()
 				require("neogit").setup({
+					-- match emacs: magit. https://magit.vc/manual/magit.html#Pulling
+					-- https://github.com/NeogitOrg/neogit/issues/985 - Use "F" binding for pulling.
+					mappings = {
+						popup = {
+							["F"] = "PullPopup",
+						},
+					},
 					sections = {
 						recent = { folded = false },
 						stashes = { folded = false },
