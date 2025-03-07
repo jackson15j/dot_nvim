@@ -268,12 +268,14 @@ require("lazy").setup({
 {
   -- https://github.com/esensar/nvim-dev-container
   'https://codeberg.org/esensar/nvim-dev-container',
-  dependencies = 'nvim-treesitter/nvim-treesitter'
+  dependencies = 'nvim-treesitter/nvim-treesitter',
+  config = true,
 },
 
 {
     -- https://github.com/romgrk/barbar.nvim
   "romgrk/barbar.nvim",
+  config = true,
 },
 
   {
@@ -353,7 +355,5 @@ require("lazy").setup({
 
 
 
-require("devcontainer").setup{}
-require("barbar").setup()
 
 
