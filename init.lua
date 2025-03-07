@@ -183,6 +183,32 @@ require("lazy").setup({
       "neovim/nvim-lspconfig",
       "onsails/lspkind.nvim",
     },
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+        ensure_installed = {
+          "bashls",
+          "docker_compose_language_service",
+          "dockerls",
+          "jsonls",
+          "lua_ls",
+          "marksman",
+          "textlsp",
+          "yamlls"
+        },
+      })
+      require("mason-lspconfig").setup_handlers {
+        -- The first entry (without a key) will be the default handler
+        -- and will be called for each installed server that doesn't have
+        -- a dedicated handler.
+        function (server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup {
+          -- capabilities = capabilities,
+          }
+        end,
+      }
+    end,
   },
 
 {
@@ -257,43 +283,21 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
--- AutoStart plugins
 
-require("mason").setup()
-require("mason-lspconfig").setup {
-  -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
-  ensure_installed = {
-    "bashls",
-    "docker_compose_language_service",
-    "dockerls",
-    "jsonls",
-    "lua_ls",
-    "marksman",
-    "textlsp",
-    "yamlls"
-  },
-}
+-- AutoStart plugins
 
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "json",
     "jsonc",  -- DevContainer requirement.
-  }
+  },
 }
+
+
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require("mason-lspconfig").setup_handlers {
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
---	  capabilities = capabilities,
-    }
-  end,
-}
 
 -- After setting up mason-lspconfig you may set up servers via lspconfig
 -- require("lspconfig").lua_ls.setup {}
